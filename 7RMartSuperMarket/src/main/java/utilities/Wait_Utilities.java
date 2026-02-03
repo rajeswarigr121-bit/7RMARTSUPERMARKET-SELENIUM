@@ -14,5 +14,10 @@ public class Wait_Utilities {
 	webdriverwait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-
+	public void waitfforelementtoselected(WebDriver driver, WebElement element) 
+	{
+	WebDriverWait webdriverwait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	webdriverwait.until(ExpectedConditions.elementToBeSelected(element));
+	}
+	
 }
