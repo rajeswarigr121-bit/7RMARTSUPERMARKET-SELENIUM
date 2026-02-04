@@ -30,6 +30,8 @@ public class AdminUserpage {
 	WebElement usertype;
 	@FindBy(xpath = "//button[@name='Create']")
 	WebElement savebutton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement adminalert;
 	
 	public AdminUserpage moreinfo_And_Newbutton()
 	{
@@ -54,5 +56,9 @@ public class AdminUserpage {
 	{
 		savebutton.click();
 		return this;
+	}
+	public boolean adminalertsave()
+	{
+		return adminalert.isDisplayed();
 	}
 }

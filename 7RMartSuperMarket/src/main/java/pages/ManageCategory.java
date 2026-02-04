@@ -31,6 +31,8 @@ public class ManageCategory {
 	WebElement showontopmenu;
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement save;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement alertcategory;
 	
 	//public ManageCategory clickOnmoreinfo() {
 	//	moreinfo.click();
@@ -64,6 +66,10 @@ public class ManageCategory {
 		wait.waitforelementtoclick(driver, save);
 		save.click();
 		return this;
+	}
+	public boolean categoryalert()
+	{
+		return alertcategory.isDisplayed();
 	}
 
 }

@@ -24,7 +24,12 @@ WebElement Password;
 WebElement Signinbutton;
 @FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
 WebElement Dashboard;
-
+@FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
+WebElement dashboard1;
+@FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
+WebElement dashboard2;
+@FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
+WebElement dashboard3;
 
 public LoginPageMain enterUsernameAndPassword(String Usernamefield, String Passwordfield)
 {
@@ -42,6 +47,18 @@ public HomePageLogout clickOnSignIn()
 public boolean isdashboardIdDisplayed()
 {
 	return Dashboard.isDisplayed();
+}
+public boolean isdashboardIdDisplayed1()
+{
+	return dashboard1.isDisplayed();
+}
+public boolean isdashboardIdDisplayed2()
+{
+	return dashboard2.isDisplayed();
+}
+public boolean isdashboardIdDisplayed3()
+{
+	return dashboard3.isDisplayed();
 }
 
 }

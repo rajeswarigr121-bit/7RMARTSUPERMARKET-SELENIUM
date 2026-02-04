@@ -1,10 +1,15 @@
 package testScriptProject;
 
+import java.io.IOException;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constants;
 import pages.AdminUserpage;
 import pages.HomePageLogout;
 import pages.LoginPageMain;
+import utilities.ExcelUtility;
 import utilities.FakerUtility;
 
 public class AdminUserpageTest extends Basetest {
@@ -14,13 +19,17 @@ public class AdminUserpageTest extends Basetest {
 	
 	
   @Test(retryAnalyzer = retry.Retry.class) //Retry
-  public void enterUsernameAndPassword() 
+  public void enterUsernameAndPassword() throws IOException 
   {
 	  LoginPageMain loginpage = new LoginPageMain(driver);
-	  loginpage.enterUsernameAndPassword("admin", "admin");
+	  String Username = ExcelUtility.getStringData(1, 0, "Adminuserpage");
+	  String Password = ExcelUtility.getStringData(1, 1, "Adminuserpage");
+	  loginpage.enterUsernameAndPassword(Username, Password);
 	  homepage=loginpage.clickOnSignIn();
 	  admin = homepage.clickOn_Moreinfo();
 	  admin.moreinfo_And_Newbutton().enterUsernamePasswordUsertype(faker.getFakeFirstName(), faker.getPassword()).dropdown().savebutton();
+	  boolean adminalerts = admin.adminalertsave();
+	  Assert.assertTrue(adminalerts, Constants.ERRORMESSAGEADMIN);
 	  
 	  
 	  

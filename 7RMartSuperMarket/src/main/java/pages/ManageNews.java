@@ -20,6 +20,8 @@ public class ManageNews {
     WebElement news;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement save;
+    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    WebElement newsalert;
     
     
     public ManageNews clickonNew()
@@ -37,5 +39,9 @@ public class ManageNews {
     {
     	save.click();
     	return this;
+    }
+    public boolean alertnewsgreen()
+    {
+    	return newsalert.isSelected();
     }
 }

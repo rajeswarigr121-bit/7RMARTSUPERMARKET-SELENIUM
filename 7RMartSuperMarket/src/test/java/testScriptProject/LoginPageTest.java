@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.beust.jcommander.Parameter;
 
+import constant.Constants;
 import pages.HomePageLogout;
 import pages.LoginPageMain;
 import utilities.ExcelUtility;
@@ -25,28 +26,37 @@ public class LoginPageTest extends Basetest {
 	  home = loginpage.clickOnSignIn();
 	  loginpage.clickOnSignIn(); //clickOnSignIn() - method name userd in main java (code) for sign in
 	  boolean dashboard = loginpage.isdashboardIdDisplayed();
-	  Assert.assertTrue(dashboard, "FailToLogin");
+	  Assert.assertTrue(dashboard, Constants.LOGINTESTPAGE1);
   }
   @Test(groups = "smoke")
   @Parameters({"username","password"})
-  public void enterCorrectUsernameAndWrongPassword(String username, String password) 
+  public void enterCorrectUsernameAndWrongPassword(String username, String password) throws IOException 
   {
 	  LoginPageMain loginpage = new LoginPageMain(driver); // LoginPageMain - classname of src/main/java(Code)
-	  loginpage.enterUsernameAndPassword(username, password); // enterUsernameAndPassword - method name userd in main java (code)
+	  String Username = ExcelUtility.getStringData(2, 0, "LoginPage");
+	  String Password = ExcelUtility.getStringData(2, 1, "LoginPage");
+	  loginpage.enterUsernameAndPassword(Username, Password); // enterUsernameAndPassword - method name userd in main java (code)
 	  loginpage.clickOnSignIn(); 
+	  boolean dashboard1 = loginpage.isdashboardIdDisplayed1();
+	  Assert.assertTrue(dashboard1, Constants.LOGINTESTPAGE2);
   }
   @Test
-  public void enterWrongUsernameAndCorrectPassword() 
+  public void enterWrongUsernameAndCorrectPassword() throws IOException 
   {
 	  LoginPageMain loginpage = new LoginPageMain(driver); 
-	  loginpage.enterUsernameAndPassword("admin123456", "admin"); 
+	  String Username = ExcelUtility.getStringData(3, 0, "LoginPage");
+	  String Password = ExcelUtility.getStringData(3, 1, "LoginPage");
+	  loginpage.enterUsernameAndPassword(Username, Password); 
 	  loginpage.clickOnSignIn(); 
+	  boolean dashboard2 = loginpage.isdashboardIdDisplayed2();
+	  Assert.assertTrue(dashboard2, Constants.LOGINTESTPAGE3);
   }
   
   @DataProvider(name = "Datas")
   public Object[] testdata()
   {
 	  Object data[][] = {{"admins", "Admin@123"},{"admins@!23", "Admin@123"}};
+	  
 	  return data;
   }
   @Test(dataProvider = "Datas")
@@ -55,5 +65,7 @@ public class LoginPageTest extends Basetest {
 	  LoginPageMain loginpage = new LoginPageMain(driver); 
 	  loginpage.enterUsernameAndPassword(username, password); 
 	  loginpage.clickOnSignIn(); 
+	  boolean dashboard3 = loginpage.isdashboardIdDisplayed3();
+	  Assert.assertTrue(dashboard3, Constants.LOGINTESTPAGE4);
   }
 }
