@@ -49,7 +49,7 @@ public class AdminUserpage {
 	{
 		//Select select = new Select(usertype);
 		//select.selectByIndex(1);
-		pageutility.selectbyindex(usertype, 1);
+		pageutility.selectByindex(usertype, 1);
 		return this;
 	}
 	public AdminUserpage savebutton()

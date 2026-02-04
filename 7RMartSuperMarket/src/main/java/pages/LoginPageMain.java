@@ -40,7 +40,7 @@ public LoginPageMain enterUsernameAndPassword(String Usernamefield, String Passw
 }
 public HomePageLogout clickOnSignIn()
 {
-	waitutilities.waitforelementtoclick(driver,Signinbutton );
+	Wait_Utilities.waitforelementTobeSelected(driver,Signinbutton );
 	Signinbutton.click();
 	return new HomePageLogout(driver);
 }

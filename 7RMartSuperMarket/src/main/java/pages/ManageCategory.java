@@ -63,7 +63,7 @@ public class ManageCategory {
 		return this;
 	}
 	public ManageCategory clickOnSavebutton() {
-		wait.waitforelementtoclick(driver, save);
+		wait.waitforelementTobeSelected(driver, save);
 		save.click();
 		return this;
 	}
