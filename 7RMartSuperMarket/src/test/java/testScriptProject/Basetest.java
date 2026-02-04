@@ -26,12 +26,11 @@ public class Basetest {
 	public WebDriver driver;
 	public Properties properties;
 	public FileInputStream fis;
-  
-  @BeforeMethod(alwaysRun = true)
-  @Parameters("Browser")
-  public void beforeMethod(String browzer) throws Exception 
-  {
-	  try {
+
+	@BeforeMethod(alwaysRun = true)
+	@Parameters("Browser")
+	public void beforeMethod(String browzer) throws Exception {
+		try {
 			properties = new Properties();
 			fis = new FileInputStream(Constants.CONFIGFILE);
 			properties.load(fis);
@@ -48,24 +47,22 @@ public class Basetest {
 		} else {
 			throw new Exception("invalid browser");
 		}
-	  //driver = new ChromeDriver();
-	  driver.get(properties.getProperty("url"));
-	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-  }
+		// driver = new ChromeDriver();
+		driver.get(properties.getProperty("url"));
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+	}
 
-  @AfterMethod(alwaysRun = true)
-  public void afterMethod(ITestResult itResult) throws IOException 
-  {
+	@AfterMethod(alwaysRun = true)
+	public void afterMethod(ITestResult itResult) throws IOException {
 //	  driver.quit();
-	  if (itResult.getStatus() == ITestResult.FAILURE) {
-		  ScreenshotUtility sc = new ScreenshotUtility();
+		if (itResult.getStatus() == ITestResult.FAILURE) {
+			ScreenshotUtility sc = new ScreenshotUtility();
 			sc.captureFailureScreenShot(driver, itResult.getName());
 		}
 		if (driver != null) {
-			//driver.quit();
+			// driver.quit();
 		}
-  }
-  
+	}
 
 }

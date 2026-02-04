@@ -15,6 +15,7 @@ public class FakerUtility {
 		return text;
 
 	}
+
 	public String getPassword() {
 
 		Faker faker = new Faker();

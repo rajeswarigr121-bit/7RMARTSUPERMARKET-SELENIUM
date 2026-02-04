@@ -11,15 +11,14 @@ import utilities.PageUtility;
 public class AdminUserpage {
 	public WebDriver driver;
 	PageUtility pageutility = new PageUtility();
-	
-	public AdminUserpage(WebDriver driver)
-	{
-	this.driver = driver;
-	PageFactory.initElements(driver, this);
+
+	public AdminUserpage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-	
-	//@FindBy(xpath = "(//a[@class='small-box-footer'])[1]")
-	//WebElement moreinfo;
+
+	// @FindBy(xpath = "(//a[@class='small-box-footer'])[1]")
+	// WebElement moreinfo;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newbutton;
 	@FindBy(xpath = "(//input[@name='username'])[1]")
@@ -32,33 +31,32 @@ public class AdminUserpage {
 	WebElement savebutton;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement adminalert;
-	
-	public AdminUserpage moreinfo_And_Newbutton()
-	{
-		//moreinfo.click();
+
+	public AdminUserpage moreinfo_And_Newbutton() {
+		// moreinfo.click();
 		newbutton.click();
 		return this;
 	}
-	public AdminUserpage enterUsernamePasswordUsertype(String usernamefield, String passwordfield)
-	{
+
+	public AdminUserpage enterUsernamePasswordUsertype(String usernamefield, String passwordfield) {
 		username.sendKeys(usernamefield);
 		password.sendKeys(passwordfield);
 		return this;
 	}
-	public AdminUserpage dropdown()
-	{
-		//Select select = new Select(usertype);
-		//select.selectByIndex(1);
+
+	public AdminUserpage dropdown() {
+		// Select select = new Select(usertype);
+		// select.selectByIndex(1);
 		pageutility.selectByindex(usertype, 1);
 		return this;
 	}
-	public AdminUserpage savebutton()
-	{
+
+	public AdminUserpage savebutton() {
 		savebutton.click();
 		return this;
 	}
-	public boolean adminalertsave()
-	{
+
+	public boolean adminalertsave() {
 		return adminalert.isDisplayed();
 	}
 }
